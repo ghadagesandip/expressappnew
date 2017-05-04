@@ -11,12 +11,10 @@
     <!-- /.row -->
 
     <!-- Projects Row -->
-    <div class="row">
+    <div  id="masonryContainer">
         <% for(var i=0; i< news.length; i++) {%>
-        <div class="col-md-4 portfolio-item">
-            <a href="#">
-                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-            </a>
+        <div class="item">
+
             <h3>
                 <a href="#"><%= news[i].title; %></a>
             </h3>

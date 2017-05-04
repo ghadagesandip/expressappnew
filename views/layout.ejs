@@ -24,6 +24,17 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <style>
+        #masonryContainer .item {
+            background-color: #f1eceb;
+            border-radius: 15px;
+            float: left;
+            margin: 5px;
+            padding: 3px 5px 2px 9px;
+            width: 220px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -54,7 +65,20 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="./js/bootstrap.min.js"></script>
+<script src="./js/masonry.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var $container = $('#masonryContainer');
+        $container.imagesLoaded(function(){
+            $container.masonry({
+                itemSelector : '.item',
+                columnWidth : 240
+            });
+        });
 
+
+    })
+</script>
 </body>
 
 </html>
