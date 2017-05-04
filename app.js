@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var db = require('./db/db.js');
+var db = require('./db.js');
 
 
 var app = express();
@@ -26,6 +26,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+// Connect to Mongo on start
+db.connect('mongodb://localhost:27017/expressmyapp', function(err){
+  if(err){
+    console.log('Unable to connect to Mongo.');
+    process.exit(1)
+  }else{
+    console.log('connected to server')
+  }
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

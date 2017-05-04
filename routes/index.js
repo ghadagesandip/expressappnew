@@ -1,15 +1,12 @@
-var express = require('express');
-var router = express.Router();
-var news = require('./controllers/news.js');
+var express = require('express'),
+    router = express.Router(),
+    newsCtrl = require('../controllers/news.js');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res) {
+  newsCtrl.getNews(req, res);
 });
 
-router.post('/add', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
 module.exports = router;

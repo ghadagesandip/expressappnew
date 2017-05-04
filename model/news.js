@@ -1,17 +1,14 @@
-var assert = require('assert');
+var db = require('../db')
 
 module.exports = {
 
-    add : function(db, cb){
-        var collection = db.collection('documents');
-        collection.insertMany([
-            {a : 1}, {a : 2}, {a : 3}
-        ], function(err, result) {
-            assert.equal(err, null);
-            assert.equal(3, result.result.n);
-            assert.equal(3, result.ops.length);
-            console.log("Inserted 3 documents into the document collection");
-            cb(result);
-        });
+    news : function(page, limit, cb){
+
+        var collection = db.get().collection('news');
+        collection.find().toArray(function(err, news) {
+            console.log('news', news);
+            cb(err, news);
+        })
     }
-}
+};
+console.log('model loaded');
