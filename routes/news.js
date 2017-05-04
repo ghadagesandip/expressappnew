@@ -4,7 +4,11 @@ var express = require('express'),
 
 
 /* GET home page. */
-router.get('/', newsCtrl.index);
+router.get('/add-news', newsCtrl.addNews);
+
+router.get('/', newsCtrl.all);
+router.post('/', newsCtrl.create);
+router.post('/:id', newsCtrl.remove);
 
 
 module.exports = router;

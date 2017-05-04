@@ -1,0 +1,11 @@
+<% extend('cmslayout') %>
+
+<ul class="list-group">
+    <% for(var i=0; i< news.length; i++) {%>
+        <li class="list-group-item"><%= news[i].title %>
+            <form action="/news/<%= news[i]._id %>" method="post">
+                <input type="submit" value="delete">
+            </form>
+        </li>
+    <% } %>
+</ul>

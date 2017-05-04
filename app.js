@@ -5,8 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./routes/index.js');
+var users = require('./routes/users.js');
+var news = require('./routes/news.js');
 var db = require('./db.js');
 
 
@@ -14,6 +15,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', require('express-ejs-extend'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -26,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/news', news);
 
 // Connect to Mongo on start
 db.connect('mongodb://localhost:27017/expressmyapp', function(err){
