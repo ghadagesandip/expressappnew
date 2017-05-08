@@ -33,6 +33,17 @@ module.exports = {
             console.log(err,data)
             cb(err, data);
         })
+    },
+
+    findById : function(id, cb){
+        var collection = db.get().collection('news');
+        collection.findOne({"_id" : ObjectId(id)}, cb);
+    },
+
+    updateRecord : function(id, data, cb){
+        console.log('updating ', data);
+        var collection = db.get().collection('news');
+        collection.updateOne({_id :ObjectId(id)}, data, cb);
     }
 
 };

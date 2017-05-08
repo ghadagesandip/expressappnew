@@ -3,6 +3,7 @@
 <ul class="list-group">
     <% for(var i=0; i< news.length; i++) {%>
         <li class="list-group-item"><%= news[i].title %>
+            <a href="news/edit/<%= news[i]._id %>">Edit</a>
             <form action="/news/<%= news[i]._id %>" method="post">
                 <input type="submit" value="delete">
             </form>

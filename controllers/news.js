@@ -42,9 +42,17 @@ module.exports = {
         });
     },
 
+    edit : function(req, resp){
+
+            News.findById(req.params.id, function(err, data){
+                console.log('news', data)
+                resp.render('edit-news', {news: data})
+
+
+                });
+    },
+
     remove : function(req, resp){
-        console.log('removed called');
-        console.log('deleting ', req.params.id);
         News.delete(req.params.id, function(err, date){
             console.log('status ',date);
             if(!err){
@@ -59,9 +67,19 @@ module.exports = {
     },
 
     addNews : function(req, resp){
-        console.log('add news called');
         resp.render('add-news');
         resp.end();
+    },
+
+    update : function(req, resp){
+        News.updateRecord(req.params.id, req.body, function(err, data){
+            if(!err){
+                resp.redirect('/news');
+                resp.end();
+            }else{
+                resp.render('edit-news');
+            }
+        });
     }
 };
 
